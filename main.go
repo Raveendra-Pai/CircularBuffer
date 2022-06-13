@@ -6,7 +6,8 @@ import (
 )
 
 func main() {
-	cbuffer, err := cbuffer.CreateBuffer[int](5)
+	//creating a circular buffer to store heterogenious data
+	cbuffer, err := cbuffer.CreateBuffer[interface{}](5)
 
 	if err != nil {
 		fmt.Println("Faile to create circular buffer, Error: ", err)
@@ -17,10 +18,10 @@ func main() {
 	For simplicity I have ignored return values of EnQueue and DeQueue calls.
 	*/
 	cbuffer.EnQueue(10)
-	cbuffer.EnQueue(20)
-	cbuffer.EnQueue(30)
-	cbuffer.EnQueue(40)
-	cbuffer.EnQueue(50)
+	cbuffer.EnQueue("Hello")
+	cbuffer.EnQueue(true)
+	cbuffer.EnQueue(false)
+	cbuffer.EnQueue('a')
 	cbuffer.PrintBuffer()
 	cbuffer.DeQueue()
 	cbuffer.PrintBuffer()
@@ -30,11 +31,11 @@ func main() {
 	cbuffer.PrintBuffer()
 	cbuffer.DeQueue()
 	cbuffer.PrintBuffer()
-	cbuffer.EnQueue(60)
+	cbuffer.EnQueue('a')
 	cbuffer.PrintBuffer()
-	cbuffer.EnQueue(20)
+	cbuffer.EnQueue("asmi")
 	cbuffer.PrintBuffer()
-	cbuffer.EnQueue(30)
+	cbuffer.EnQueue(true)
 	cbuffer.PrintBuffer()
 	cbuffer.DeQueue()
 	cbuffer.DeQueue()
